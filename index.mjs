@@ -4,7 +4,11 @@ import router from '@koa/router'
 
 const kafka = new Kafka({
   clientId: 'my-app',
-  brokers: ['localhost:9092']
+  brokers: ['localhost:9092'],
+  retry: {
+    initialRetryTime: 10000,
+    retries: 5
+  }
 })
  
 const producer = kafka.producer()

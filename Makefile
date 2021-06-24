@@ -2,8 +2,9 @@ all: build compose run
 build:
 	docker compose build
 compose:
-	docker compose up -d
+	docker compose up -d --remove-orphans
 run:
 	npm start
-stop:
+rm:
 	docker compose down
+	docker compose rm
