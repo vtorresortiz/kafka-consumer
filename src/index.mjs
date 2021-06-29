@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import Koa from 'koa';
 import Router from '@koa/router';
 import producer from './kafka/producer.mjs';
@@ -19,7 +18,6 @@ const run = async () => {
   const c = await consumer();
   await c.run({
     eachMessage: async ({ topic, partition, message }) => {
-      // eslint-disable-next-line no-console
       console.log({
         topic,
         partition,
@@ -30,7 +28,6 @@ const run = async () => {
   });
 };
 
-// eslint-disable-next-line no-console
 run().catch(console.error);
 
 const app = new Koa();

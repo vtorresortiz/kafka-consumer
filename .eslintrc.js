@@ -1,20 +1,26 @@
 module.exports = {
   settings: {
     'import/resolver': {
-      node: { extensions: ['.js', '.mjs'] },
+      node: {
+        extensions: ['.js'],
+      },
     },
   },
   env: {
-    browser: true,
+    node: true,
     es2021: true,
   },
   extends: [
     'airbnb-base',
   ],
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 2021,
     sourceType: 'module',
   },
   rules: {
+    'no-console': ['error', { allow: ['log', 'error'] }],
+    'import/extensions': ['error', 'ignorePackages', {
+      mjs: 'never',
+    }],
   },
 };

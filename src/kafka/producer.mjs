@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import kafka from './client.mjs';
 
 export default async () => {

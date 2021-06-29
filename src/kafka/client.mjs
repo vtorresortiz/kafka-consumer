@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import { Kafka } from 'kafkajs';
 import { appId, brokersList } from '../config.mjs';
 

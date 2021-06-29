@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import kafka from './client.mjs';
 import { topicName, groupId } from '../config.mjs';
 
