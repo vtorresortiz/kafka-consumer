@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.mjs"
+    "start": "node src/index.mjs"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,10 @@
     "axios": "^0.21.1",
     "kafkajs": "^1.15.0",
     "koa": "^2.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
   }
 }

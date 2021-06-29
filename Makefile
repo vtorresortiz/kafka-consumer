@@ -1,4 +1,6 @@
-all: build compose run
+all: eslint build compose run
+eslint:
+	npx eslint src/**.mjs
 build:
 	docker compose build
 compose:
