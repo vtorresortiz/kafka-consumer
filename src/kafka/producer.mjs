@@ -1,7 +1,19 @@
 import kafka from './client.mjs';
+import { topicName } from '../config.mjs';
 
-export default async () => {
-  const producer = await kafka.producer();
+let producer = null;
+
+const init = async () => {
+  producer = await kafka.producer();
   await producer.connect();
-  return producer;
+};
+
+export default async (message) => {
+  if (producer === null) await init();
+  await producer.send({
+    topic: topicName,
+    messages: [
+      { value: message },
+    ],
+  });
 };

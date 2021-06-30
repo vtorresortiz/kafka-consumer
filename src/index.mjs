@@ -1,39 +1,22 @@
 import Koa from 'koa';
 import Router from '@koa/router';
-import producer from './kafka/producer.mjs';
-import consumer from './kafka/consumer.mjs';
-import { topicName } from './config.mjs';
+import produce from './kafka/producer.mjs';
+import consume, { stats } from './kafka/consumer.mjs';
 
 const run = async () => {
-  // Producing
-  const p = await producer();
-  await p.send({
-    topic: topicName,
-    messages: [
-      { value: 'Hello KafkaJS user!' },
-    ],
-  });
-
-  // Consuming
-  const c = await consumer();
-  await c.run({
-    eachMessage: async ({ topic, partition, message }) => {
-      console.log({
-        topic,
-        partition,
-        offset: message.offset,
-        value: message.value.toString(),
-      });
-    },
-  });
+  await produce('Hello KafkaJS user!');
+  await consume();
 };
 
 run().catch(console.error);
 
 const app = new Koa();
 const route = new Router();
-route.get('/health', (ctx) => {
+route.get('/health', async (ctx) => {
   ctx.status = 200;
+  ctx.body = {
+    consumer: await stats(),
+  };
 });
 app.use(route.routes());
 app.listen(3000);
