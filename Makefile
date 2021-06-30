@@ -10,3 +10,5 @@ run:
 rm:
 	docker compose down
 	docker compose rm
+logs:
+	docker compose logs -f
