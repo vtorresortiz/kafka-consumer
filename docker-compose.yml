@@ -55,18 +55,3 @@ services:
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       PORT: 9021
     
-  lenses:
-    image: lensesio/lenses
-    environment:
-      LENSES_PORT: 9991
-      LENSES_KAFKA_BROKERS: "PLAINTEXT://broker:29092"
-      #LENSES_KAFKA_METRICS_DEFAULT_PORT: 9101
-      #LENSES_SECURITY_USER: admin
-      #LENSES_SECURITY_PASSWORD: admin
-    ports:
-      - 9991:9991
-      - 9102:9102
-    depends_on:
-      - broker
-    volumes:
-      - ./license.json:/license.json
